@@ -12,7 +12,7 @@ function NavBar() {
         <h3>
           <img
             className="homeImage"
-            src="https://i.imgur.com/TPH7boK.png"
+            src="https://i.imgur.com/wKKjlcI.png"
             alt="Home Image"
           />
         </h3>

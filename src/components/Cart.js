@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const linkStyle = {
   color: "rgb(107, 215, 177)"
 };
 
 class Cart extends Component {
+  state = {
+    redirect: false
+  };
+
   renderBooks = () => {
     return this.props.cartBooks.map(cartBook => (
       <div className="innerCard">
@@ -39,25 +43,19 @@ class Cart extends Component {
       .then(this.props.updateCart);
   };
 
-  prices = () => this.props.cartBooks.map(cartBook => cartBook.book.price);
+  priceArray = () => this.props.cartBooks.map(cartBook => cartBook.book.price);
 
-  total = () => this.prices().reduce((a, b) => a + b, 0);
+  totalOrderCost = () => this.priceArray().reduce((a, b) => a + b, 0);
 
   handleCheckout = e => {
     e.preventDefault();
     this.addOrderToServer(this.setOrderDetails());
   };
 
-  addOrderToServer = order => {
-    return fetch(`http://localhost:3000/orders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(order)
-    })
-      .then(resp => resp.json())
-      .then(console.log);
+  renderRedirect = data => {
+    if (this.state.redirect) {
+      return <Redirect to={`/orders`} />;
+    }
   };
 
   setOrderDetails = () => {
@@ -70,11 +68,30 @@ class Cart extends Component {
     return order;
   };
 
+  addOrderToServer = order => {
+    return fetch(`http://localhost:3000/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    })
+      .then(resp => resp.json())
+      .then(
+        this.props.cartBooks.map(cb => this.deleteCartBookFromServer(cb.id))
+      )
+      .then(
+        this.setState({
+          redirect: true
+        })
+      );
+  };
+
   renderTotalAndCheckout = () => {
     if (this.props.cartBooks.length > 0) {
       return (
         <>
-          <h3>Basket Total £{this.total()}</h3>
+          <h3>Basket Total £{this.totalOrderCost()}</h3>
           <button onClick={this.handleCheckout}>Checkout</button>
         </>
       );
@@ -96,6 +113,7 @@ class Cart extends Component {
         <h1>{this.props.user.first_name}'s Basket</h1>
         <div className="Card">{this.renderBooks()}</div>
         {this.renderTotalAndCheckout()}
+        {this.renderRedirect()}
       </>
     );
   }

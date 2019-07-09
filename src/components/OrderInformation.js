@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+let array = [];
 
 class OrderInformation extends Component {
   state = {
@@ -28,17 +29,21 @@ class OrderInformation extends Component {
       ))
     );
 
-  priceArray = () =>
-    this.state.books.map(books => books.map(book => book.price));
+  priceArray = () => {
+    array = this.state.books.map(books => books.map(book => book.price));
+    return array.reduce((a, b) => a + b, 0);
+  };
+  //This doesn't work, it needs to be: array[0].reduce((a, b) => a + b, 0)
+  //On loading it says array is empty.
 
-  totalOrderCost = () => this.priceArray().reduce((a, b) => a + b, 0);
+  // totalOrderCost = () => this.priceArray().reduce((a, b) => a + b, 0);
 
   render() {
     return (
       <>
         <h1>Order Information Page</h1>
         <h3>Ordered on {Date(this.state.created)}</h3>
-        <h3>Total Cost of £{this.totalOrderCost()}</h3>
+        <h3>Total Cost of £{this.priceArray()}</h3>
         <div className="Card">{this.renderBooks()}</div>
       </>
     );

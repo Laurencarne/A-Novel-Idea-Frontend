@@ -12,7 +12,11 @@ code {
 .App {
   text-align: center;
 }
-
+/* -------------HOME------------- */
+.logo {
+  width: 60%;
+}
+/* -------------HOME------------- */
 /* -------------NAVBAR------------- */
 nav {
   display: flex;
@@ -196,3 +200,104 @@ input:hover {
   color: rgb(255, 126, 0);
 }
 /* -------------SEARCH BAR------------- */
+/* -------------SLIDER------------- */
+.slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 50vh;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.arrow {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: #f9f9f9; */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform ease-in 0.1s;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  top: 50%;
+}
+
+.nextArrow {
+  right: 25px;
+}
+.backArrow {
+  left: 25px;
+}
+.nextArrow:hover,
+.backArrow:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.sliderButton {
+  height: 100%;
+  width: 100%;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+.sliderButton:hover {
+  height: 100%;
+  width: 100%;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+/* -------------SLIDER------------- */
+/* -------------CONTAINER FOR ALL BOOKS------------- */
+.BookBarCard {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin: -70px auto;
+  padding: 0px;
+}
+.BookBarInnerCard {
+  height: 40vh;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 2px;
+}
+.bookBarDirections {
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 280px;
+  width: 7vh;
+}
+.genreCatagories {
+  text-align: left;
+  margin-left: 16%;
+  margin-bottom: 30px;
+}
+/* -------------CONTAINER FOR ALL BOOKS------------- */

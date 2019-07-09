@@ -9,7 +9,6 @@ import OrderInformation from "../components/OrderInformation";
 import Cart from "../components/Cart";
 import Wishlists from "../components/Wishlists";
 import Books from "../components/Books";
-import Fiction from "../components/Fiction";
 import BookInformation from "../components/BookInformation";
 
 const BASEURL = "https://www.googleapis.com/books/v1/volumes";
@@ -19,7 +18,6 @@ class App extends Component {
     super();
     this.state = {
       books: [],
-      // userId: 1,
       currentUser: {},
       currentUsersOrders: [],
       currentUsersWishlist: [],
@@ -51,7 +49,7 @@ class App extends Component {
     ).then(resp => resp.json());
   };
 
-  addVerifiedBooksToState = () => {
+  addVerifiedBooksToState = (data, category) => {
     return data =>
       data.items.map(book => {
         if (
@@ -118,22 +116,13 @@ class App extends Component {
     this.fetchUsersFromServer().then(this.addUserToState());
   };
 
-  // fetchFilteredBooksFromServer = genre => {
-  //   return fetch(
-  //     BASEURL +
-  //       `?q=%22%22+subject:${genre}&printType=books&orderBy=newest&maxResults=40&langRestrict=en`
-  //   )
-  //     .then(resp => resp.json())
-  //     .then(data => this.setState({ [genre]: data.items }));
-  // };
-
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact render={() => <Home />} />
             <Route
               path="/login"
               exact
@@ -153,11 +142,6 @@ class App extends Component {
                   setSortBy={this.setSortBy}
                 />
               )}
-            />
-            <Route
-              path="/fiction"
-              exact
-              render={() => <Fiction books={this.state.fiction} />}
             />
             <Route
               path="/books/:id"
