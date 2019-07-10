@@ -35,15 +35,7 @@ function NavBar() {
               src="https://i.imgur.com/gphuW4V.png"
               alt="Shopping Cart"
             />
-          </li>
-        </Link>
-        <Link style={navStyle} to="/login">
-          <li>
-            <img
-              className="navImage"
-              src="https://i.imgur.com/gkemPmm.png"
-              alt="Login Key"
-            />
+            number
           </li>
         </Link>
       </ul>
@@ -52,3 +44,13 @@ function NavBar() {
 }
 
 export default NavBar;
+
+// <Link style={navStyle} to="/login">
+//   <li>
+//     <img
+//       className="navImage"
+//       src="https://i.imgur.com/gkemPmm.png"
+//       alt="Login Key"
+//     />
+//   </li>
+// </Link>

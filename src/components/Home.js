@@ -8,10 +8,12 @@ const BASEURL = "https://www.googleapis.com/books/v1/volumes";
 class Home extends Component {
   state = {
     redirect: false,
-    index: 0,
+    Fiction: 0,
+    Juvenile: 0,
+    Education: 0,
     fictionBooks: [],
-    juvenileFiction: [],
-    education: []
+    junvenileBooks: [],
+    educationBooks: []
   };
 
   componentDidMount() {
@@ -66,13 +68,13 @@ class Home extends Component {
 
   setJuvenileFictionBooksState = book => {
     this.setState({
-      juvenileFiction: [...this.state.juvenileFiction, book]
+      junvenileBooks: [...this.state.junvenileBooks, book]
     });
   };
 
   setEducationBooksState = book => {
     this.setState({
-      education: [...this.state.education, book]
+      educationBooks: [...this.state.educationBooks, book]
     });
   };
 
@@ -92,67 +94,102 @@ class Home extends Component {
   //////////////////////////////
   //BOOKBAR
   //////////////////////////////
-  nextBooks = booksState => {
-    if (this.state.index >= booksState.length - 16) {
+  nextBooks = (booksState, category) => {
+    if (category === "Fiction") {
+      let index = this.state.Fiction;
+      this.showNextBooks(index, booksState, category);
+    } else if (category === "Juvenile") {
+      let index = this.state.Juvenile;
+      this.showNextBooks(index, booksState, category);
+    } else if (category === "Education") {
+      let index = this.state.Education;
+      this.showNextBooks(index, booksState, category);
+    }
+  };
+
+  showNextBooks = (index, booksState, category) => {
+    if (index >= booksState.length - 12) {
       this.setState({
-        index: 0
+        [category]: 0
       });
     } else {
       this.setState({
-        index: this.state.index + 6
+        [category]: index + 6
       });
     }
   };
 
-  prevBooks = booksState => {
-    if (this.state.index === 0) {
+  prevBooks = (booksState, category) => {
+    if (category === "Fiction") {
+      let index = this.state.Fiction;
+      this.showPrevBooks(index, booksState, category);
+    } else if (category === "Juvenile") {
+      let index = this.state.Juvenile;
+      this.showPrevBooks(index, booksState, category);
+    } else if (category === "Education") {
+      let index = this.state.Education;
+      this.showPrevBooks(index, booksState, category);
+    }
+  };
+
+  showPrevBooks = (index, booksState, category) => {
+    if (index === 0) {
       this.setState({
-        index: booksState.length - 6
+        [category]: booksState.length - 6
       });
-    } else if (this.state.index <= 16) {
+    } else if (index <= 6) {
       this.setState({
-        index: 0
+        [category]: 0
       });
     } else {
       this.setState({
-        index: this.state.index - 6
+        [category]: index - 6
       });
     }
   };
+
   //////////////////////////////
   //RENDER
   //////////////////////////////
   render() {
     let moreFictionBooks = this.state.fictionBooks.slice(
-      this.state.index,
-      this.state.index + 6
+      this.state.Fiction,
+      this.state.Fiction + 6
     );
-    let moreJuvenileBooks = this.state.juvenileFiction.slice(
-      this.state.index,
-      this.state.index + 6
+    let moreJuvenileBooks = this.state.junvenileBooks.slice(
+      this.state.Juvenile,
+      this.state.Juvenile + 6
     );
-    let moreEducationBooks = this.state.education.slice(
-      this.state.index,
-      this.state.index + 6
+    let moreEducationBooks = this.state.educationBooks.slice(
+      this.state.Education,
+      this.state.Education + 6
     );
     return (
       <div>
         <Slider handleSliderClick={this.handleSliderClick} />
         <BookBar
-          nextBooks={() => this.nextBooks(this.state.fictionBooks)}
-          prevBooks={() => this.prevBooks(this.state.fictionBooks)}
+          nextBooks={() => this.nextBooks(this.state.fictionBooks, "Fiction")}
+          prevBooks={() => this.prevBooks(this.state.fictionBooks, "Fiction")}
           moreBooks={moreFictionBooks}
           genre={"Fiction"}
         />
         <BookBar
-          nextBooks={() => this.nextBooks(this.state.juvenileFiction)}
-          prevBooks={() => this.prevBooks(this.state.juvenileFiction)}
+          nextBooks={() =>
+            this.nextBooks(this.state.junvenileBooks, "Juvenile")
+          }
+          prevBooks={() =>
+            this.prevBooks(this.state.junvenileBooks, "Juvenile")
+          }
           genre={"Young Adult"}
           moreBooks={moreJuvenileBooks}
         />
         <BookBar
-          nextBooks={() => this.nextBooks(this.state.education)}
-          prevBooks={() => this.prevBooks(this.state.education)}
+          nextBooks={() =>
+            this.nextBooks(this.state.educationBooks, "Education")
+          }
+          prevBooks={() =>
+            this.prevBooks(this.state.educationBooks, "Education")
+          }
           genre={"Education"}
           moreBooks={moreEducationBooks}
         />

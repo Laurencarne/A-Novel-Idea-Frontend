@@ -81,7 +81,7 @@ class BookInformation extends Component {
   // };
 
   // addBookToServerWishlist = book => {
-  //   return fetch(`http://localhost:3000/wishlists`, {
+  //   return fetch(`https://a-novel-idea.herokuapp.com/wishlists`, {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json"

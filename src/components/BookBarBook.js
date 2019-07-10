@@ -21,16 +21,3 @@ class BookBarBook extends Component {
 }
 
 export default BookBarBook;
-
-// <h3 className="bookTitleLink">
-// {" "}
-// {this.props.book.volumeInfo.title}{" "}
-// </h3>
-// <h5 className="bookAuthorLink">
-// {" "}
-// {this.props.book.volumeInfo.authors}{" "}
-// </h5>
-// <p className="bookPriceLink">
-// {" "}
-// £{this.props.book.saleInfo.listPrice.amount}{" "}
-// </p>

@@ -32,7 +32,9 @@ class App extends Component {
   }
 
   fetchUsersFromServer = () =>
-    fetch(`http://localhost:3000/users/1`).then(resp => resp.json());
+    fetch(`https://a-novel-idea.herokuapp.com/users/1`).then(resp =>
+      resp.json()
+    );
 
   addUserToState = () => data =>
     this.setState({

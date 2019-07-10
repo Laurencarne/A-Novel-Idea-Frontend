@@ -11,7 +11,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/users").then(resp =>
+    fetch("https://a-novel-idea.herokuapp.com/users").then(resp =>
       resp.json().then(data =>
         data.map(user =>
           this.setState({

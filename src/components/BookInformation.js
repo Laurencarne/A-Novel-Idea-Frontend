@@ -81,7 +81,7 @@ class BookInformation extends Component {
   };
 
   addBookToServerCart = book => {
-    return fetch(`http://localhost:3000/books`, {
+    return fetch(`https://a-novel-idea.herokuapp.com/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -115,7 +115,7 @@ class BookInformation extends Component {
   };
 
   addBookToServerWishlist = book => {
-    return fetch(`http://localhost:3000/books`, {
+    return fetch(`https://a-novel-idea.herokuapp.com/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -147,32 +147,40 @@ class BookInformation extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="bookTitle">{this.state.book.title}</h1>
-        <img
-          className="bookImage"
-          src={this.state.image}
-          alt={this.state.book.title}
-        />
-        <h2 className="bookAuthor">{this.state.book.authors}</h2>
-        <p className="bookPriceLink">£{this.state.price.amount}</p>
-        <h3 className="bookPublisher">
-          Publisher: {this.state.book.publisher}
-        </h3>
-        <h4 className="bookPublishedDate">
-          Published: {this.state.book.publishedDate}
-        </h4>
-        <h6 className="bookPageCount">
-          Page Count: {this.state.book.pageCount}
-        </h6>
-        <h6 className="bookGenre"> Genres: {this.state.genre}</h6>
-        <p
-          className="bookDescription"
-          dangerouslySetInnerHTML={{ __html: this.state.book.description }}
-        />
-        <div>
-          {this.renderWishButton()}
-          {this.renderCartButton()}
+      <div className="wrapper">
+        <div className="sideA" />
+        <div className="leftBox">
+          <img
+            className="bookImage"
+            src={this.state.image}
+            alt={this.state.book.title}
+          />
+          <h2 className="bookAuthor">By {this.state.book.authors}</h2>
+          <h3 className="bookPriceLink">£{this.state.price.amount}</h3>
+        </div>
+        <div className="rightBox">
+          <h1 className="bookTitle">{this.state.book.title}</h1>
+          <h3 className="bookPublisher">
+            Publisher: {this.state.book.publisher}
+          </h3>
+          <h4 className="bookPublishedDate">
+            Published: {this.state.book.publishedDate}
+          </h4>
+          <h4 className="bookPageCount">
+            Page Count: {this.state.book.pageCount}
+          </h4>
+          <h4 className="bookGenre"> Genres: {this.state.genre}</h4>
+          <div>
+            {this.renderWishButton()}
+            {this.renderCartButton()}
+          </div>
+        </div>
+        <div className="sideB" />
+        <div className="bottomBox">
+          <p
+            className="bookDescription"
+            dangerouslySetInnerHTML={{ __html: this.state.book.description }}
+          />
         </div>
       </div>
     );

@@ -28,7 +28,7 @@ class Wishlists extends Component {
   };
 
   deleteWishBookFromServer = id => {
-    return fetch(`http://localhost:3000/wish_books/${id}`, {
+    return fetch(`https://a-novel-idea.herokuapp.com/wish_books/${id}`, {
       method: "DELETE"
     })
       .then(respo => respo.json())

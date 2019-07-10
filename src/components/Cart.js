@@ -7,7 +7,8 @@ const linkStyle = {
 
 class Cart extends Component {
   state = {
-    redirect: false
+    redirect: false,
+    id: ""
   };
 
   renderBooks = () => {
@@ -36,9 +37,12 @@ class Cart extends Component {
   };
 
   deleteCartBookFromServer = cartBookId => {
-    return fetch(`http://localhost:3000/cart_books/${cartBookId}`, {
-      method: "DELETE"
-    })
+    return fetch(
+      `https://a-novel-idea.herokuapp.com/cart_books/${cartBookId}`,
+      {
+        method: "DELETE"
+      }
+    )
       .then(respo => respo.json())
       .then(this.props.updateCart);
   };
@@ -52,9 +56,9 @@ class Cart extends Component {
     this.addOrderToServer(this.setOrderDetails());
   };
 
-  renderRedirect = data => {
+  renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={`/orders`} />;
+      return <Redirect to={`/orders/${this.state.id}`} />;
     }
   };
 
@@ -69,7 +73,7 @@ class Cart extends Component {
   };
 
   addOrderToServer = order => {
-    return fetch(`http://localhost:3000/orders`, {
+    return fetch(`https://a-novel-idea.herokuapp.com/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -77,6 +81,11 @@ class Cart extends Component {
       body: JSON.stringify(order)
     })
       .then(resp => resp.json())
+      .then(data =>
+        this.setState({
+          id: data.id
+        })
+      )
       .then(
         this.props.cartBooks.map(cb => this.deleteCartBookFromServer(cb.id))
       )

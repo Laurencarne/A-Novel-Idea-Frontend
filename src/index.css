@@ -11,6 +11,11 @@ code {
 
 .App {
   text-align: center;
+  padding-bottom: 10vh;
+}
+#root {
+  position: relative;
+  min-height: 100vh;
 }
 /* -------------HOME------------- */
 .logo {
@@ -74,19 +79,38 @@ nav {
 /* -------------CONTAINER FOR ALL BOOKS------------- */
 
 /* -------------EACH INDIVIDUAL BOOK------------- */
-.container {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "sideA leftBox rightBox sideB"
+    "bottomBox  bottomBox bottomBox bottomBox ";
+  grid-gap: 10px;
+  padding: 10px;
   align-items: center;
-  margin: 2% 10%;
+}
+.leftBox {
+  grid-area: leftBox;
+  margin-top: 3vh;
+}
+.rightBox {
+  grid-area: rightBox;
+  margin-top: 3vh;
+}
+.bottomBox {
+  grid-area: bottomBox;
+  margin: 40px 20vh 0vh 20vh;
+}
+.sideA {
+  grid-area: sideA;
+}
+.sideB {
+  grid-area: sideB;
 }
 .book-img {
   border-radius: 2px;
-  margin-bottom: 4\vh;
-  height: 220px;
-  width: auto;
+  margin-bottom: 4vh;
+  height: auto;
+  width: 18vh;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
 }
@@ -98,7 +122,12 @@ nav {
   color: rgb(73, 79, 82);
   margin: 8px 0px 0px 0px;
 }
-
+.bookTitle {
+  font-style: italic;
+}
+.bookAuthor {
+  font-style: italic;
+}
 .bookPriceLink,
 .bookAuthorLink {
   color: rgb(73, 79, 82);
@@ -108,23 +137,37 @@ nav {
 button {
   height: 5vh;
   width: 15vh;
-  color: black;
+  color: #6bd7b1;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #6bd7b1;
   border-radius: 4px;
   margin: 4px;
   padding: 5px;
+  font-size: 100%;
+  box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
-.selected {
-  background-color: rgb(126, 175, 252);
-  border: 1px solid rgb(126, 175, 252);
+
+button:hover {
+  background-color: rgba(255, 126, 0, 1);
+  border: 1px solid rgba(255, 126, 0, 1);
   color: white;
+}
+
+.selected {
+  background-color: rgba(255, 41, 72, 1);
+  border: 1px solid rgba(255, 41, 72, 1);
+  color: white;
+}
+.bookImage {
+  height: 35vh;
+  border-radius: 0.3vh;
+  box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 /* -------------EACH INDIVIDUAL BOOK------------- */
 
 /* -------------FOOTER------------- */
 .Footer {
-  /* position: fixed; */
+  position: absolute;
   min-height: 5vh;
   left: 0;
   bottom: 0;
@@ -269,12 +312,12 @@ input:hover {
   outline: none;
 }
 /* -------------SLIDER------------- */
-/* -------------CONTAINER FOR ALL BOOKS------------- */
+/* -------------BOOKBAR------------- */
 .BookBarCard {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  margin: -70px auto;
+  margin: -50px auto;
   padding: 0px;
 }
 .BookBarInnerCard {
@@ -294,10 +337,41 @@ input:hover {
   align-content: center;
   height: 280px;
   width: 7vh;
+  box-shadow: none;
+  color: black;
+}
+.bookBarDirections:hover {
+  background-color: rgb(255, 255, 255);
+  border: 0px;
+  box-shadow: none;
+  color: black;
 }
 .genreCatagories {
   text-align: left;
   margin-left: 16%;
   margin-bottom: 30px;
 }
-/* -------------CONTAINER FOR ALL BOOKS------------- */
+/* -------------BOOKBAR------------- */
+/* -------------ORDERS------------- */
+.OrderHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+.InnerOrder {
+  margin: 10px;
+  height: 10vh;
+  width: 25%;
+  padding: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2%;
+  background-color: rgba(107, 215, 177, 0.2);
+}
+.InnerOrder:hover {
+  background-color: rgba(107, 215, 177, 0.5);
+}
+/* -------------ORDERS------------- */
