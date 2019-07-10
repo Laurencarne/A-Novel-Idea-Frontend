@@ -35,7 +35,6 @@ function NavBar() {
               src="https://i.imgur.com/gphuW4V.png"
               alt="Shopping Cart"
             />
-            number
           </li>
         </Link>
       </ul>
