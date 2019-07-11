@@ -32,7 +32,6 @@ class OrderInformation extends Component {
 
   priceArray = () => {
     array = this.state.books.map(book => book.price);
-    // debugger;
     return array.reduce((a, b) => a + b, 0);
   };
 
