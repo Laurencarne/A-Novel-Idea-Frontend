@@ -11,24 +11,24 @@ It is an online bookshop for those of us who love to read but never find the tim
 
 * You can look through different genres of books.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/uGzmNL1.gifv)
+![A-Novel-Idea-Gif](https://i.imgur.com/uGzmNL1.gif)
 
 * Each book links to its own routed page with more information about that book.
 
 * Add a book to your wishlist or cart.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/FcN8VlE.gifv)
+![A-Novel-Idea-Gif](https://i.imgur.com/FcN8VlE.gif)
 
 * Search through the books list. Fetches data from Google Books API.
 
 * Filter the books by price or alphabetically.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/uPvnv1p.gifv)
+![A-Novel-Idea-Gif](https://i.imgur.com/uPvnv1p.gif)
 
 * Add books to your cart and checkout.
 
 * On checkout your book will be added to your orders to keep track.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/W9m9Qm2.gifv)
+![A-Novel-Idea-Gif](https://i.imgur.com/W9m9Qm2.gif)
 
 I was given 5 days to create the project I hope you enjoy it.
