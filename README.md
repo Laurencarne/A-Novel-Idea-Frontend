@@ -29,6 +29,6 @@ It is an online bookshop for those of us who love to read but never find the tim
 
 * On checkout your book will be added to your orders to keep track.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/W9m9Qm2.gif)
+
 
 I was given 5 days to create the project I hope you enjoy it.
