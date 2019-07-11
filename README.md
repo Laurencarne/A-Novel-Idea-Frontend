@@ -11,7 +11,7 @@ It is an online bookshop for those of us who love to read but never find the tim
 
 * You can look through different genres of books.
 
-![A-Novel-Idea-Gif](https://i.imgur.com/uGzmNL1.gif)
+![A-Novel-Idea-Gif](https://i.imgur.com/amhu7N0.gif)
 
 * Each book links to its own routed page with more information about that book.
 
